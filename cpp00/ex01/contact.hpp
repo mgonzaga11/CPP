@@ -5,26 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 17:02:43 by mgonzaga          #+#    #+#             */
-/*   Updated: 2024/11/11 19:37:39 by mgonzaga         ###   ########.fr       */
+/*   Created: 2024/11/27 16:15:32 by mgonzaga          #+#    #+#             */
+/*   Updated: 2024/12/03 20:10:30 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
-#define CONTACT_HPP
+# define CONTACT_HPP
 
 #include <string>
+#include <iostream>
 
-class Contact{
+class contact
+{
 	private:
-		std::string first_Name;
-		std::string	last_Name;
-		std::string	nick_Name;
-		std::string	phoneNumber;
-		std::string	darkestSecret;
+		std::string FirstName;
+		std::string LastName;
+		std::string NickName;
+		std::string PhoneNumber;
+		std::string	DarkestSecret;
+		int index;
 	
 	public:
+		void	SetFirstName(std::string fn);
+		void	SetLastName(std::string ln);
+		void	SetNickName(std::string nm);
+		void	SetPhoneNumber(std::string pn);
+		void	SetDarkestSecret(std::string ds);
+		void	index_number();
 		
+		std::string GetFirstName ();
+        std::string GetLastName ();
+        std::string GetNickName ();
+        std::string GetPhoneNumber ();
+        std::string GetDarkestSecret ();
+		int	get_index();
+};
 
-
-}
+#endif
