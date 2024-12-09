@@ -28,6 +28,8 @@ int main()
 		getline(std::cin, input);
 		if(input == "ADD")
 			PhoneBook.addconcts();
+		else if(input == "SEARCH")
+			
 			
 	}
 	

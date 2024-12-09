@@ -14,13 +14,13 @@
 
 void	PhoneBook::addconcts()
 {
-	contact[contact->get_index()].SetFirstName(get_input("Enter the name:"));
-	contact[contact->get_index()].SetLastName(get_input("Enter the lastname:"));
-	contact[contact->get_index()].SetNickName(get_input("Enter the nickname"));
-	contact[contact->get_index()].SetPhoneNumber(get_input("Enter the phonenumber"));
-	contact[contact->get_index()].SetDarkestSecret(get_input("Enter the darkestsecret"));
+	contacts[index].SetFirstName(get_input("Enter the name:"));
+	contacts[index].SetLastName(get_input("Enter the lastname:"));
+	contacts[index].SetNickName(get_input("Enter the nickname"));
+	contacts[index].SetPhoneNumber(get_input("Enter the phonenumber"));
+	contacts[index].SetDarkestSecret(get_input("Enter the darkestsecret"));
 	
-	contact->index_number();	
+	index = (index + 1) % 8;	
 }
 
 std::string PhoneBook::get_input(std::string info)
@@ -29,6 +29,11 @@ std::string PhoneBook::get_input(std::string info)
 	std::cout << info << std::endl;
 	getline(std::cin, line);
 	return(line);
+}
+
+void	PhoneBook::searchcontacts()
+{
+	
 }
 
 PhoneBook::PhoneBook() {

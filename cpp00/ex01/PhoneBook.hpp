@@ -18,11 +18,13 @@
 
 class PhoneBook {
 private:
-	contact contact[8];
+	contact contacts[8];
+	int		index;
 	
 public:
     PhoneBook();
 	void	addconcts();
+	void	searchcontacts();
 	std::string get_input(std::string info);
 };
 
