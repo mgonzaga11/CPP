@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:32:26 by mgonzaga          #+#    #+#             */
-/*   Updated: 2024/12/03 20:11:01 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:57:42 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,4 @@ std::string contact::GetPhoneNumber()
 std::string contact::GetDarkestSecret()
 {
 	return(DarkestSecret);
-}
-
-void	contact::index_number()
-{
-		index++;	
-}
-
-int	contact::get_index()
-{
-	return(index);
 }

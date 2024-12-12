@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:15:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2024/12/03 20:10:30 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:58:16 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class contact
 		std::string NickName;
 		std::string PhoneNumber;
 		std::string	DarkestSecret;
-		int index;
 	
 	public:
 		void	SetFirstName(std::string fn);
@@ -32,14 +31,13 @@ class contact
 		void	SetNickName(std::string nm);
 		void	SetPhoneNumber(std::string pn);
 		void	SetDarkestSecret(std::string ds);
-		void	index_number();
+
 		
 		std::string GetFirstName ();
         std::string GetLastName ();
         std::string GetNickName ();
         std::string GetPhoneNumber ();
         std::string GetDarkestSecret ();
-		int	get_index();
 };
 
 #endif
