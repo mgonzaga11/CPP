@@ -6,10 +6,9 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:38:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/15 19:46:57 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/30 16:02:31 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
