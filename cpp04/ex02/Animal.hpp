@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/03 13:36:51 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/03 15:47:44 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/04/03 13:33:42 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 13:35:19 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
 #include <iostream>
 #include <string>
 
-#include "Animal.hpp"
 
-class Dog: public Animal
+class Animal
 {
-    private:
+    protected:
 
-    Brain *brain;
-    
+    std::string type;
+
     public:
+	
+	Animal(void);
+    Animal(std::string type);
+    virtual ~Animal(void);
+    Animal(const Animal &other);
+    Animal &operator=(const Animal &other);
+    
+    std::string getType() const;
+    void setType(std:: string newType);
 
-    Dog(void);
-    Dog(const Dog &other);
-    Dog &operator=(const Dog &other);
-    virtual ~Dog(void);
-
-    void makeSound() const;
-    void printIdeas() const;
+    virtual void makeSound() const;
 };
 
 #endif

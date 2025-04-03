@@ -3,52 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefil <andrefil@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 00:53:38 by andrefil          #+#    #+#             */
-/*   Updated: 2024/07/14 18:02:04 by andrefil         ###   ########.fr       */
+/*   Created: 2025/04/03 13:36:34 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 15:53:40 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
-#include <iostream>
 
 Cat::Cat(void) : Animal() {
 	std::cout << "Cat defaut constructor called" << std::endl;
-	try {
-		_brain = new Brain();
-	}
-	catch (const std::bad_alloc &strerr) {
-		std:: cout << "Cat Brain memory allocation failed: " << strerr.what() << std::endl;
-	}
-	setType("Cat");
+	type = "Cat";
 }
 
 Cat::~Cat(void) {
 	std::cout << "Cat destructor called" << std::endl;
-	delete _brain;
 }
 
-Cat::Cat(Cat const &param) : Animal(param) {
+Cat::Cat(Cat const &copy) : Animal(copy) {
+	*this = copy;
 	std::cout << "Cat copy constructor called" << std::endl;
-	_brain = new Brain(*param.getBrain());
-	setType("Cat");
 }
 
-Cat	&Cat::operator=(Cat const &param) {
+Cat	&Cat::operator=(Cat const &other) {
 	std::cout << "Cat copy assignment operator called" << std::endl;
-	if (this != &param) {
-		delete _brain;
-		_brain = new Brain(*param.getBrain());
-		setType(param.getType());
+	if (this != &other) {
+		this->type = other.type;
 	}
 	return (*this);
 }
 
 void	Cat::makeSound(void) const {
 	std::cout << "Miauuuuuu...." << std::endl;
-}
-
-Brain	*Cat::getBrain(void) const {
-	return (_brain);
 }

@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 13:36:34 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/03 14:04:53 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:53:40 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Cat::Cat(Cat const &copy) : Animal(copy) {
 Cat	&Cat::operator=(Cat const &other) {
 	std::cout << "Cat copy assignment operator called" << std::endl;
 	if (this != &other) {
-		setType(other.getType());
+		this->type = other.type;
 	}
 	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 13:37:10 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/03 14:07:01 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:52:45 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Dog::Dog(Dog const &copy) : Animal(copy) {
 Dog	&Dog::operator=(Dog const &other) {
 	std::cout << "Dog copy assignment operator called" << std::endl;
 	if (this != &other) {
-		setType(other.getType());
+		this->type = other.type;
 	}
 	return (*this);
 }

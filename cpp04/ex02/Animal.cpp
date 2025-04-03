@@ -3,46 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefil <andrefil@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 00:28:20 by andrefil          #+#    #+#             */
-/*   Updated: 2024/07/14 01:54:32 by andrefil         ###   ########.fr       */
+/*   Created: 2025/04/03 13:35:39 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 15:50:42 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #include <iostream>
-#include <ostream>
+#include "Animal.hpp"
 
-Animal::Animal(void) : _type("Animal") {
-	std::cout << "Animal default constuctor called" << std::endl;
+
+Animal::Animal(void) : type("Animal") {
+    std::cout << "Animal default constuctor called" << std::endl;
+}
+
+
+Animal::Animal(const Animal &other) {
+	std::cout <<  "Animal copy constructor called" << std::endl;
+    *this = other;
+}
+
+Animal &Animal::operator=(const Animal &other) {
+	std::cout << "Animal copy assignment operator called" << std::endl;
+    if (this != &other)
+        this->type = other.type;
+    return *this;
 }
 
 Animal::~Animal(void) {
 	std::cout << "Animal destructor called" << std::endl;
 }
 
-Animal::Animal(Animal const &param) {
-	std::cout << "Animal copy constuctor called" << std::endl;
-	*this = param;
+std::string Animal::getType() const {
+    return this->type;
 }
 
-Animal	&Animal::operator=(Animal const &param) {
-	std::cout << "Animal copy assignment operator called" << std::endl;
-	if (this != &param) {
-		_type = param.getType();
-	}
-	return (*this);
+void Animal::setType(std::string newType) {
+    this->type = newType;
 }
 
-std::string	Animal::getType(void) const {
-	return (_type);
-}
 
-void	Animal::setType(std::string const &type) {
-	_type = type;
-}
-
-void	Animal::makeSound(void) const {
-	std::cout << "Some generic Animal sound" << std::endl;
+void Animal::makeSound() const {
+    std::cout << "Generic animal sound." << std::endl;
 }

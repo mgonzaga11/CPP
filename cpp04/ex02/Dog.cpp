@@ -3,54 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefil <andrefil@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 01:06:18 by andrefil          #+#    #+#             */
-/*   Updated: 2024/07/14 18:02:41 by andrefil         ###   ########.fr       */
+/*   Created: 2025/04/03 13:37:10 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 15:53:46 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
-#include "Animal.hpp"
-#include <iostream>
-#include <ostream>
 
 Dog::Dog(void) : Animal() {
-	std::cout << "Dog default constructor called" << std::endl;
-	try {
-		_brain = new Brain();
-	}
-	catch (const std::bad_alloc &strerr) {
-		std:: cout << "Dog Brain memory allocation failed: " << strerr.what() << std::endl;
-	}
-	setType("Dog");
+	std::cout << "Dog defaut constructor called" << std::endl;
+	type = "Dog";
 }
 
 Dog::~Dog(void) {
 	std::cout << "Dog destructor called" << std::endl;
-	delete _brain;
 }
 
-Dog::Dog(Dog const &param) : Animal(param) {
+Dog::Dog(Dog const &copy) : Animal(copy) {
+	*this = copy;
 	std::cout << "Dog copy constructor called" << std::endl;
-	_brain = new Brain(*param.getBrain());
-	setType(param.getType());
 }
 
-Dog	&Dog::operator=(Dog const &param) {
+Dog	&Dog::operator=(Dog const &other) {
 	std::cout << "Dog copy assignment operator called" << std::endl;
-	if (this != &param) {
-		delete _brain;
-		_brain = new Brain(*param.getBrain());
-		setType(param.getType());
+	if (this != &other) {
+		this->type = other.type;
 	}
 	return (*this);
 }
 
 void	Dog::makeSound(void) const {
-	std::cout << "Auuuuuu..." << std::endl;
-}
-
-Brain	*Dog::getBrain(void) const {
-	return (_brain);
+	std::cout << "Au Au...." << std::endl;
 }

@@ -3,67 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andrefil <andrefil@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 00:21:40 by andrefil          #+#    #+#             */
-/*   Updated: 2024/07/14 05:10:27 by andrefil         ###   ########.fr       */
+/*   Created: 2025/04/03 13:36:03 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 14:51:03 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
+//#include "WrongCat.hpp"
 #include <iostream>
 
-using std::cout;
-using std::endl;
-
-int main(void) {
-  {
-    cout << "\nSubject test\n" << endl;
-
-    const Animal *j = new Dog();
-    const Animal *i = new Cat();
-    cout << j->getType() << " " << endl;
-    cout << i->getType() << " " << endl;
-    i->makeSound(); // will output the cat sound!
-    j->makeSound();
-    delete j; // should not create a leak
-    delete i;
-  }
-  std::cout << "\nMy tests\n" << std::endl;
-  {
-#define NBR_ANIMALS 4
-
-    const Animal *i = new Dog();
-    cout << endl;
-
-    const Animal *j = new Cat();
-    cout << endl;
-
-    cout << "------------------- ZOO -------------------" << endl;
-    const Animal *zoo[NBR_ANIMALS];
-
-    cout << "------------------- DOGS -------------------" << endl;
-    for (size_t i = 0; i < 2; i += 1) {
-      zoo[i] = new Dog();
-      cout << endl;
-    }
-
-    cout << "------------------- CATS -------------------" << endl;
-    for (size_t i = 2; i < 4; i += 1) {
-      zoo[i] = new Cat();
-      cout << endl;
-    }
-
-    cout << "---------------- DELETE ZOO ---------------" << endl;
-    for (size_t i = 0; i < NBR_ANIMALS; i += 1) {
-      delete zoo[i];
-    }
-    cout << "--------------- ZOO DELETED ---------------" << endl;
-    cout << endl;
-
-    delete i;
-    delete j;
-  }
-  return 0;
+int main()
+{
+//const Animal* meta = new Animal();
+const Animal* j = new Dog();
+const Animal* i = new Cat();
+std::cout << j->getType() << " " << std::endl;
+std::cout << i->getType() << " " << std::endl;
+Cat m;
+m.makeSound();
+i->makeSound(); //will output the cat sound!
+j->makeSound();
+delete j;
+delete i;
+//meta->makeSound();
+return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 13:35:39 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/03 14:15:58 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:50:42 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ Animal &Animal::operator=(const Animal &other) {
 Animal::~Animal(void) {
 	std::cout << "Animal destructor called" << std::endl;
 }
-
 
 std::string Animal::getType() const {
     return this->type;
