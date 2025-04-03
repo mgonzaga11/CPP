@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 17:38:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/01 09:55:03 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/04/03 15:33:07 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 15:42:16 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-#include <iostream>
+#include "Animal.hpp"
 
-class Fixed
-{
+class Brain{
 	private:
-		int number;
-		static const int fixed_number = 8;
+		std::string ideas[100];
 	public:
-		Fixed(void);
-		Fixed(Fixed& copy);
-		~Fixed(void);
-		
-		Fixed& operator=(Fixed& copy);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
+		Brain(void);
+		Brain(Brain const &other);
+		~Brain(void);
+		Brain &operator=(Brain const &other);
+
+		void		setIdeas(std::string ideas, int index);
+		std::string getIdeas(int index);
+
 };
 
 #endif

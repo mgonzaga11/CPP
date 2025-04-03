@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*    FragTrap.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 17:38:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/01 09:55:03 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/04/02 15:21:41 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/02 15:22:41 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-#include <iostream>
+# include "ClapTrap.hpp"
 
-class Fixed
-{
-	private:
-		int number;
-		static const int fixed_number = 8;
-	public:
-		Fixed(void);
-		Fixed(Fixed& copy);
-		~Fixed(void);
-		
-		Fixed& operator=(Fixed& copy);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
+class ScavTrap : public ClapTrap {
+    public:
+        ScavTrap(void);
+        ScavTrap(std::string name);
+        ScavTrap(const ScavTrap &copy);
+        ~ScavTrap(void);
+
+        ScavTrap &operator=(const ScavTrap &copy);
+
+        void attack(const std::string &target);
+        void guardGate(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:36:54 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/31 18:48:44 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:36:31 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class Fixed{
 	private:
 		int Fixed_Point;
-		static const int fractionalBits = 8;
+		static const int Fractional_Bits = 8;
 
 	public:
 		Fixed(); 

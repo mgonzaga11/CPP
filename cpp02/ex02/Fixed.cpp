@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 17:46:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/31 19:14:17 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:54:13 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,69 @@ Fixed Fixed::operator+(const Fixed& other) const{
 
 Fixed Fixed::operator*(const Fixed& other) const{
 	return Fixed(this->toFloat() * other.toFloat());
+}
+
+// Pre-increment 
+Fixed &Fixed::operator++(void){
+	this->Fixed_Point++;
+	return(*this);
+}
+
+// Pre-decrement 
+Fixed &Fixed::operator--(void){
+	this->Fixed_Point--;
+	return(*this);
+}
+
+// Post-increment 
+Fixed Fixed::operator++(int){
+	Fixed temp(*this);
+	operator++();
+	return(temp);
+}
+
+// Post-decrement
+Fixed Fixed::operator--(int){
+	Fixed temp(*this);
+	operator--();
+	return(temp);
+}
+
+int Fixed::getRawBits() const {
+//	std::cout << "getRawBits member function called" << std::endl;
+	return this->Fixed_Point;
+}
+
+void Fixed::setRawBits( int const raw ){
+	//std::cout << "setRawBits member function called" << std::endl;
+	this->Fixed_Point = raw;
+}
+
+float Fixed::toFloat( void ) const{
+	return((float)this->Fixed_Point / 256);
+}
+
+int Fixed::toInt( void ) const{
+	return(this->Fixed_Point >> Fractional_Bits);
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b){
+	return(a < b ? a : b);
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b){
+	return(a > b ? a : b);
+}
+
+Fixed const &Fixed::min(const Fixed &a, const Fixed &b){
+	return(a < b ? a : b);
+}
+
+Fixed const &Fixed::max(const Fixed &a, const Fixed &b){
+	return(a > b ? a : b);
+}
+
+std::ostream & operator<<(std::ostream &os, const Fixed &obj ){
+	os << obj.toFloat();
+	return os;
 }

@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 17:38:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/01 09:55:03 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/04/03 13:33:42 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 13:35:19 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
 #include <iostream>
+#include <string>
 
-class Fixed
+
+class Animal
 {
-	private:
-		int number;
-		static const int fixed_number = 8;
-	public:
-		Fixed(void);
-		Fixed(Fixed& copy);
-		~Fixed(void);
-		
-		Fixed& operator=(Fixed& copy);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
+    protected:
+
+    std::string type;
+
+    public:
+	
+	Animal(void);
+    Animal(std::string type);
+    virtual ~Animal(void);
+    Animal(const Animal &other);
+    Animal &operator=(const Animal &other);
+    
+    std::string getType() const;
+    void setType(std:: string newType);
+
+    virtual void makeSound() const;
 };
 
 #endif

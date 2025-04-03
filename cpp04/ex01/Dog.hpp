@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 17:38:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/01 09:55:03 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/04/03 13:36:51 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 15:31:39 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
 #include <iostream>
+#include <string>
 
-class Fixed
+#include "Animal.hpp"
+
+class Dog: public Animal
 {
-	private:
-		int number;
-		static const int fixed_number = 8;
-	public:
-		Fixed(void);
-		Fixed(Fixed& copy);
-		~Fixed(void);
-		
-		Fixed& operator=(Fixed& copy);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
+    private:
+
+    Brain *_brain;
+    
+    public:
+
+    Dog(void);
+    Dog(const Dog &other);
+    Dog &operator=(const Dog &other);
+    virtual ~Dog(void);
+
+    void makeSound() const;
+    void printIdeas() const;
 };
 
 #endif

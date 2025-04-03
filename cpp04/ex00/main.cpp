@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 17:38:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/01 09:55:03 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/04/03 13:36:03 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 14:51:03 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
-
+#include "Cat.hpp"
+#include "Dog.hpp"
+//#include "WrongCat.hpp"
 #include <iostream>
 
-class Fixed
+int main()
 {
-	private:
-		int number;
-		static const int fixed_number = 8;
-	public:
-		Fixed(void);
-		Fixed(Fixed& copy);
-		~Fixed(void);
-		
-		Fixed& operator=(Fixed& copy);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
-};
-
-#endif
+//const Animal* meta = new Animal();
+const Animal* j = new Dog();
+const Animal* i = new Cat();
+std::cout << j->getType() << " " << std::endl;
+std::cout << i->getType() << " " << std::endl;
+Cat m;
+m.makeSound();
+i->makeSound(); //will output the cat sound!
+j->makeSound();
+delete j;
+delete i;
+//meta->makeSound();
+return (0);
+}

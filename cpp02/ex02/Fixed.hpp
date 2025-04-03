@@ -6,23 +6,21 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 17:47:08 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/31 18:42:36 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:45:27 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef Fixed_HPP
 # define Fixed_HPP
 
-#include <iostream>
-#include <cmath>
+# include <iostream>
+# include <cmath>
 
 class Fixed{
 	private:
 		int Fixed_Point;
 		static const int Fractional_Bits = 8;
 	public:
-		static const int epsilon = 1;
 		Fixed();
 		Fixed(Fixed const &copy);
 		Fixed(const int number);
@@ -39,11 +37,10 @@ class Fixed{
 		Fixed operator+(const Fixed& obj) const;
 		Fixed operator*(const Fixed& obj) const;
 		Fixed operator/(const Fixed& obj) const;
-		Fixed &operator++(); 
+		Fixed &operator++(void);
+		Fixed &operator--(void);
 		Fixed operator++(int);
-		Fixed &operator--(); 
 		Fixed operator--(int);
-		
 		int getRawBits() const;
 		void setRawBits( int const raw );
 		float toFloat( void ) const;

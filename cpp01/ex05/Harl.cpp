@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 19:15:06 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/10 14:32:41 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:16:42 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,15 @@ void	Harl::error(void) {
 	std::cout << "This is unacceptable! I want to speak to the manager now.\n" << std::endl;
 }
 
-
-	void	Harl::complain(std::string level){
-	
-	
+void Harl::complain(std::string level)
+{
+	std::string levels[] = {"DEBUG","INFO", "WARNING", "ERROR"};
+	void (Harl::*functions[])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	for (size_t i = 0; i < 4; ++i) {
+		if (levels[i] == level) {
+			(this->*functions[i])();
+			return;
+		}
 	}
+	std::cout << "[UNKNOWN] Level not recognized." << std::endl;
+}

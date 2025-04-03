@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:39:05 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/15 20:10:43 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/04/01 09:55:06 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void Fixed::setRawBits( int const raw)
 	std::cout << "setRawBits member function called" << std::endl;
 	this->number = raw;
 }
+
 Fixed::~Fixed(void){std::cout << "Destructor called" << std::endl;}
 
 Fixed& Fixed::operator=(Fixed& copy){
