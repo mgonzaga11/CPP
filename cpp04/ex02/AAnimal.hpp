@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/03 15:33:07 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/03 16:26:30 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/04/03 13:33:42 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/04/03 18:43:15 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-#include "AAnimal.hpp"
+#include <iostream>
+#include <string>
 
-class Brain{
-	private:
-		std::string ideas[100];
-	public:
-		Brain(void);
-		Brain(Brain const &other);
-		~Brain(void);
-		Brain &operator=(Brain const &other);
+class AAnimal
+{
+    protected:
 
-		void		setIdeas(std::string ideas, int index);
-		std::string getIdeas(int index);
+    std::string type;
 
+    public:
+	
+	AAnimal(void);
+    AAnimal(std::string type);
+    virtual ~AAnimal(void);
+    AAnimal(const AAnimal &other);
+    AAnimal &operator=(const AAnimal &other);
+    
+    std::string getType() const;
+    void setType(std:: string newType);
+
+    virtual void makeSound() const = 0;
 };
 
 #endif

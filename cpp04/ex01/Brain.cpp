@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 15:33:17 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/03 15:43:00 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/04/03 15:57:10 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Brain::Brain(void){
 
 Brain::Brain(Brain const &other){
 	std::cout <<  "Brain copy constructor called" << std::endl;
-	*this = that;
+	*this = other;
 }
 
 Brain::~Brain(void){
@@ -29,9 +29,9 @@ Brain::~Brain(void){
 
 Brain  &Brain::operator=(Brain const &other){
 	std::cout << "Brain copy assignment operator called" << std::endl;
-	if(this != &that)
+	if(this != &other)
 		for (int i = 0; i < 100; i++)
-			ideas[i] = that.ideas[i];
+			ideas[i] = other.ideas[i];
 	return(*this);
 }
 

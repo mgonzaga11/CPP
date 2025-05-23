@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 13:36:23 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/03 15:47:25 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:16:34 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat: public Animal
 {
@@ -33,6 +34,7 @@ class Cat: public Animal
 
     void makeSound() const;
     void printIdeas() const;
+    Brain	*getBrain(void) const;
 };
 
 #endif

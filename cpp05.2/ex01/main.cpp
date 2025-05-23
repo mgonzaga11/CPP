@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/03 15:33:07 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/04/03 16:26:30 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/05/21 15:24:46 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/05/22 14:42:50 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
-
-#include "AAnimal.hpp"
-
-class Brain{
-	private:
-		std::string ideas[100];
-	public:
-		Brain(void);
-		Brain(Brain const &other);
-		~Brain(void);
-		Brain &operator=(Brain const &other);
-
-		void		setIdeas(std::string ideas, int index);
-		std::string getIdeas(int index);
-
-};
-
-#endif
+#include "Bureaucrat.hpp"
+int main()
+{
+	try {
+		Bureaucrat a("Marcela", 152);
+	}
+	catch (const std::exception& e) {
+		std::cerr << "Erro: " << e.what() << std::endl;
+		return 1;
+	}
+}
