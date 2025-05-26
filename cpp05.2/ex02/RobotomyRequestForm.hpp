@@ -6,19 +6,33 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:22:00 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/26 11:15:58 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/26 18:24:37 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 
-class RobotomyRequestForm{
-	
-	private: 
-		
-	
-};
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
+class RobotomyRequestForm : public AForm {
+    
+    private:
+        std::string target;
+            
+    protected:
+        void action() const;
+    
+    public:
+        RobotomyRequestForm(); 
+        RobotomyRequestForm(const RobotomyRequestForm &other); 
+        RobotomyRequestForm &operator=(const RobotomyRequestForm &other); 
+        ~RobotomyRequestForm(); 
+        RobotomyRequestForm(const std::string target); 
+};
 
 #endif

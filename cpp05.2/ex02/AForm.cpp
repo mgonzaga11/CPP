@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 14:45:26 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/24 17:24:48 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/26 17:14:42 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ AForm::AForm(const std::string Name_, const int toSing_, const int toExec_):
 Name("empty"), toSign(toSing_), toExec(toExec_), isSigned(false){
 
 	if(toSing_ > 150 || toExec_ > 150)
-		throw GradeTooLowException;
+		throw GradeTooLowException();
 	if(toSing_ < 1 || toExec_ < 1)
-		throw GradeTooHighException;
+		throw GradeTooHighException();
 }
 
 std::string AForm::GetName() const{
@@ -61,3 +61,13 @@ void AForm::execute( Bureaucrat const & executor) const
 const char* AForm::exceptionnotsign:: what() const throw(){
 	return "Form is not signed!";
 }
+
+const char* AForm::GradeTooHighException::what() const throw() {
+    return "AForm: Grade too high!";
+}
+
+const char* AForm::GradeTooLowException::what() const throw() {
+    return "AForm: Grade too low!";       
+}
+
+std::ostream &opertor<<

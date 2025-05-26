@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 14:47:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/24 17:48:05 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:16:09 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include "Bureaucrat.hpp"
+#include <exception>
 
 class Bureaucrat;
 

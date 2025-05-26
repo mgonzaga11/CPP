@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 16:48:34 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/26 11:54:31 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:13:42 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@ class ShrubberyCreationForm: public AForm
 {
 	private:
 		std::string target;
+
+	protected:
+        void action() const;
 		
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(ShrubberyCreationForm& other);
+		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 
 		virtual ~ShrubberyCreationForm();
-		void execute(Bureaucrat const &executor) const;
 };
 
 #endif
