@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 14:45:26 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/24 16:34:10 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/24 17:24:48 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form() : Name("empty"), toSign(-1), toExec(-1), isSigned(false){}
+AForm::AForm() : Name("empty"), toSign(-1), toExec(-1), isSigned(false){}
 
-Form::Form(const std::string Name_, const int toSing_, const int toExec_): 
+AForm::AForm(const std::string Name_, const int toSing_, const int toExec_): 
 Name("empty"), toSign(toSing_), toExec(toExec_), isSigned(false){
 
 	if(toSing_ > 150 || toExec_ > 150)
@@ -23,34 +23,41 @@ Name("empty"), toSign(toSing_), toExec(toExec_), isSigned(false){
 		throw GradeTooHighException;
 }
 
-std::string Form::GetName() const{
+std::string AForm::GetName() const{
 	return Name;	
 }
 
-int Form::GetToExec() const{
+int AForm::GetToExec() const{
 	return toExec;
 }
 
-int Form::GetToSign() const{
+int AForm::GetToSign() const{
 	return toSign;
 }
 
-const char* Form::GradeTooHighException::what() const throw() {
+const char* AForm::GradeTooHighException::what() const throw() {
     return "Grade too high!";
 }
 
-const char* Form::GradeTooLowException::what() const throw() {
+const char* AForm::GradeTooLowException::what() const throw() {
     return "Grade too low!";
 }
 
-// changes form's status if bureaucrat's grade is high enough
-void    Form::beSigned(const Bureaucrat &guy) {
 
-    // check if bureaucrat's grade is high enough to sign the form
-    if (guy.getGrade() > this->grade_required_to_sign) {
-        throw Form::GradeTooLowException();
-    }
-    this->is_signed = true;
+bool AForm::getIsSign() const
+{
+	return isSigned;
 }
 
-	
+void AForm::execute( Bureaucrat const & executor) const
+{
+	if(getIsSign() == false)
+		throw exceptionnotsign();
+	if(executor.getGrade() > this->GetToExec())
+		throw GradeTooLowException();
+	this->action();
+}
+
+const char* AForm::exceptionnotsign:: what() const throw(){
+	return "Form is not signed!";
+}

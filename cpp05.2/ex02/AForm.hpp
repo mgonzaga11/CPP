@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 14:47:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/26 09:51:00 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/24 17:48:05 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <string>
+#include "Bureaucrat.hpp"
 
-class Form {
+class Bureaucrat;
+
+class AForm {
 	private:
 		const std::string Name;
 		bool isSigned;
 		const int toSign;
 		const int toExec;
+	protected:
+		virtual void action()const = 0;
 	public:
-		Form();
-		Form(const std::string Name_, const int toSing_, const int toExec_);
-		Form(const Form &other);
-		Form& operator=(const Form &other);
-		~Form();
+		AForm();
+		AForm(const std::string Name_, const int toSing_, const int toExec_);
+		AForm(const AForm &other);
+		AForm& operator=(const AForm &other);
+		virtual ~AForm();
 		
-
+		void execute(Bureaucrat const & executor) const;
 		std::string GetName() const;
+		bool getIsSign() const;
 		int GetToSign() const;
 		int GetToExec() const;
 		class GradeTooHighException : public std::exception{
@@ -39,10 +45,11 @@ class Form {
 		class GradeTooLowException : public std::exception{
 			virtual const char* what() const throw();
 		};
-		void    beSigned(const Bureaucrat &guy);
-
-        // attempt to sign the form
-        void    signForm(const Form &paper);
+		
+		class exceptionnotsign: public std::exception{
+			virtual const char *what() const throw();
+		};
+		
 };
 
 #endif
