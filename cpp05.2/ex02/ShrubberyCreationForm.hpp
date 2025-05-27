@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 16:48:34 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/26 16:13:42 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:07:11 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 #include <stdexcept>
 #include <exception>
 
-class ShrubberyCreationForm: public AForm
-{
+class ShrubberyCreationForm : public AForm {
 	private:
 		std::string target;
 
@@ -29,12 +28,10 @@ class ShrubberyCreationForm: public AForm
         void action() const;
 		
 	public:
-		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
-
-		virtual ~ShrubberyCreationForm();
+		~ShrubberyCreationForm();
 };
 
 #endif

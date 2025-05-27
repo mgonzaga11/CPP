@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 10:45:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/21 15:12:42 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/27 17:35:33 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Bureaucrat{
 		~Bureaucrat();
 		std::string getName() const;
 		int getGrade() const;
-		void ingrementGrade();
+		void incrementGrade();
 		void decrementGrade();
 		
 		class GradeTooHighException : public std::exception{

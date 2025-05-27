@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:22:00 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/26 18:24:37 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:05:09 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class RobotomyRequestForm : public AForm {
         void action() const;
     
     public:
-        RobotomyRequestForm(); 
         RobotomyRequestForm(const RobotomyRequestForm &other); 
         RobotomyRequestForm &operator=(const RobotomyRequestForm &other); 
         ~RobotomyRequestForm(); 

@@ -6,14 +6,17 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 14:47:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/26 09:51:00 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:42:13 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 #define FORM_HPP
 
+#include "Bureaucrat.hpp"
 #include <string>
+
+class Bureaucrat;
 
 class Form {
 	private:
@@ -32,6 +35,7 @@ class Form {
 		std::string GetName() const;
 		int GetToSign() const;
 		int GetToExec() const;
+		bool          getIsSigned() const;
 		class GradeTooHighException : public std::exception{
 			virtual const char* what() const throw();
 		};
@@ -39,10 +43,9 @@ class Form {
 		class GradeTooLowException : public std::exception{
 			virtual const char* what() const throw();
 		};
-		void    beSigned(const Bureaucrat &guy);
+		void    beSigned(const Bureaucrat &other);
 
-        // attempt to sign the form
-        void    signForm(const Form &paper);
 };
+std::ostream &operator<<(std::ostream &out, const Form &form);
 
 #endif

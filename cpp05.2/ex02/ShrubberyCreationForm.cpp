@@ -6,18 +6,15 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:54:48 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/26 18:42:04 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:07:18 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-
-	ShrubberyCreationForm::ShrubberyCreationForm(): 
-		AForm("ShrubberyCreationForm", 145, 137), target("empty") {}
 	
 	ShrubberyCreationForm::ShrubberyCreationForm(std::string target): 
-		AForm("ShrubberyCreationForm", 145, 137), target("target"){
+		AForm("ShrubberyCreationForm", 145, 137), target(target){
 		
 	}
 	

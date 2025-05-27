@@ -6,22 +6,31 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 14:45:26 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/24 16:34:10 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:56:54 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form() : Name("empty"), toSign(-1), toExec(-1), isSigned(false){}
-
-Form::Form(const std::string Name_, const int toSing_, const int toExec_): 
-Name("empty"), toSign(toSing_), toExec(toExec_), isSigned(false){
-
-	if(toSing_ > 150 || toExec_ > 150)
-		throw GradeTooLowException;
-	if(toSing_ < 1 || toExec_ < 1)
-		throw GradeTooHighException;
+Form::Form() : Name("empty"), toSign(-1), toExec(-1), isSigned(false){
+		if(toSign  > 150 || toExec > 150)
+		throw GradeTooLowException();
+	if(toSign < 1 || toExec < 1)
+		throw GradeTooHighException();
 }
+
+Form::Form(const std::string Name, const int toSign, const int toExec_): 
+Name(Name), toSign(toSign), toExec(toExec), isSigned(false){
+
+	if(toSign > 150 || toExec > 150)
+		throw GradeTooLowException();
+	if(toSign < 1 || toExec < 1)
+		throw GradeTooHighException();
+}
+
+Form::Form(const Form &other)
+    : Name(other.Name),isSigned(other.isSigned),toSign(other.toSign),
+      toExec(other.toExec) {}
 
 std::string Form::GetName() const{
 	return Name;	
@@ -35,6 +44,11 @@ int Form::GetToSign() const{
 	return toSign;
 }
 
+bool    Form::getIsSigned() const {
+    return isSigned;
+}
+
+
 const char* Form::GradeTooHighException::what() const throw() {
     return "Grade too high!";
 }
@@ -43,14 +57,27 @@ const char* Form::GradeTooLowException::what() const throw() {
     return "Grade too low!";
 }
 
-// changes form's status if bureaucrat's grade is high enough
-void    Form::beSigned(const Bureaucrat &guy) {
 
-    // check if bureaucrat's grade is high enough to sign the form
-    if (guy.getGrade() > this->grade_required_to_sign) {
+void    Form::beSigned(const Bureaucrat &other) {
+
+    if (other.getGrade() > this->GetToSign()) {
         throw Form::GradeTooLowException();
     }
-    this->is_signed = true;
+    this->isSigned = true;
 }
 
-	
+
+std::ostream &operator<<(std::ostream &out, const Form &form) {
+
+    if (form.getIsSigned()) {
+        out << form.GetName() << ", form is signed, requires grade " 
+            << form.GetToSign() << " to sign, " << form.GetToExec()
+            << " to execute.";
+    }
+    else {
+        out << form.GetName() << ", form is unsigned, requires grade " 
+            << form.GetToSign() << " to sign, " << form.GetToExec()
+            << " to execute.";
+    }
+    return out;
+}

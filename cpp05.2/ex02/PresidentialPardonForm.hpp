@@ -6,14 +6,14 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 16:48:23 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/26 10:27:18 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:05:25 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
 
-#include <AForm.hpp>
+#include "AForm.hpp"
 
 class PresidentialPardonForm:public AForm {
 	private:
@@ -22,11 +22,10 @@ class PresidentialPardonForm:public AForm {
 	protected:
         void action() const;
 	public:	
-		PresidentialPardonForm();
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm &other);
 		PresidentialPardonForm& operator=(const PresidentialPardonForm &other);
-		~PresidentialPardonForm();
+		~PresidentialPardonForm(void);
 		
 		
 };
