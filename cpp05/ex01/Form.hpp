@@ -5,46 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 14:57:13 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/13 17:46:33 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/05/22 14:47:56 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/05/28 11:45:55 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
-# define FORM_HPP
+#define FORM_HPP
 
-#include <iostream>
+
+#include <string>
 #include "Bureaucrat.hpp"
+#include <exception>
+#include <iostream>
 
 class Bureaucrat;
 
-class Form{
-	
+class Form {
 	private:
-		std::string const Name;
+		const std::string Name;
+		const int toSign;
+		const int toExec;
 		bool isSigned;
-		int const			gradeToExecute;
-		int const			gradeToSign;
 	public:
-		Form(void);
-		Form(std::string name, int newGradeSign, int newGradeEx);
-		Form(Form const &that);
-		~Form(void);
-		Form &operator=(Form const &src);
-		const std::string &getName() const;
-		bool get_sing() const;
-		int getGradeToExecute() const;
-		int getGradeToSign() const;
-		void beSigned(const Bureaucrat& b);
-		class GradeTooHighException : public std::exception {
+		Form(const std::string Name_, const int toSing_, const int toExec_);
+		Form(const Form &other);
+		Form& operator=(const Form &other);
+		~Form();
+		
+
+		std::string GetName() const;
+		int 		GetToSign() const;
+		int			GetToExec() const;
+		bool        getIsSign() const;
+		class GradeTooHighException : public std::exception{
 			virtual const char* what() const throw();
 		};
 		
-		class GradeTooLowException : public std::exception {
+		class GradeTooLowException : public std::exception{
 			virtual const char* what() const throw();
 		};
-};
+		void    beSigned(const Bureaucrat &other);
 
-std::ostream &operator<<(std::ostream &os, Form const &fr);
+};
+std::ostream &operator<<(std::ostream &out, const Form &form);
 
 #endif

@@ -5,60 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 14:44:03 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/13 14:44:07 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/05/21 15:24:46 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/05/28 14:16:50 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Bureaucrat.hpp"
 
 int main() {
-    std::cout << "----- Teste de criação válida -----" << std::endl;
+
+std::cout << std::endl;
+	std::cout << "========================= BUREAUCRAT TEST  ===========================" << std::endl;
+	std::cout << "=================================================================\n" << std::endl;
+
+    std::cout << " Criando Bureaucrat com nota válida:" << std::endl;
     try {
-        Bureaucrat a("Alice", 42);
-        std::cout << a << std::endl;
-    } catch (std::exception& e) {
-        std::cout << "Erro: " << e.what() << std::endl;
+        Bureaucrat b1("Alice", 75);
+        std::cout << b1 << std::endl;
+
+        std::cout << "\n Incrementando nota:" << std::endl;
+        b1.incrementGrade();
+        std::cout << b1 << std::endl;
+
+        std::cout << "\n Decrementando nota:" << std::endl;
+        b1.decrementGrade();
+        std::cout << b1 << std::endl;
+    }
+    catch (std::exception& e) {
+        std::cerr << "Erro: " << e.what() << std::endl;
     }
 
-    std::cout << "\n----- Teste de criação com grau muito alto (0) -----" << std::endl;
+    std::cout << "\n Criando Bureaucrat com nota muito alta (0):" << std::endl;
     try {
-        Bureaucrat b("Bob", 0); // Deve lançar GradeTooHighException
-    } catch (std::exception& e) {
-        std::cout << "Erro: " << e.what() << std::endl;
+        Bureaucrat b2("Bob", 0); // Deve lançar exceção
+    }
+    catch (std::exception& e) {
+        std::cerr << "Erro: " << e.what() << std::endl;
     }
 
-    std::cout << "\n----- Teste de criação com grau muito baixo (151) -----" << std::endl;
+    std::cout << "\n Criando Bureaucrat com nota muito baixa (151):" << std::endl;
     try {
-        Bureaucrat c("Charlie", 151); // Deve lançar GradeTooLowException
-    } catch (std::exception& e) {
-        std::cout << "Erro: " << e.what() << std::endl;
+        Bureaucrat b3("Charlie", 151); // Deve lançar exceção
+    }
+    catch (std::exception& e) {
+        std::cerr << "Erro: " << e.what() << std::endl;
     }
 
-    std::cout << "\n----- Teste de incremento (subir de 2 para 1 e falhar ao passar de 1) -----" << std::endl;
+    std::cout << "\n Testando limite superior (nota 1) com incremento:" << std::endl;
     try {
-        Bureaucrat d("Diana", 2);
-        std::cout << d << std::endl;
-
-        d.incrementGrade(); // 2 -> 1
-        std::cout << "Depois do incremento: " << d << std::endl;
-
-        d.incrementGrade(); // 1 -> erro
-    } catch (std::exception& e) {
-        std::cout << "Erro ao incrementar: " << e.what() << std::endl;
+        Bureaucrat b4("Diana", 1);
+        std::cout << b4 << std::endl;
+        b4.incrementGrade(); // Deve lançar exceção
+    }
+    catch (std::exception& e) {
+        std::cerr << "Erro: " << e.what() << std::endl;
     }
 
-    std::cout << "\n----- Teste de decremento (descer de 149 para 150 e falhar ao passar de 150) -----" << std::endl;
+    std::cout << "\n Testando limite inferior (nota 150) com decremento:" << std::endl;
     try {
-        Bureaucrat e("Edu", 149);
-        std::cout << e << std::endl;
-
-        e.decrementGrade(); // 149 -> 150
-        std::cout << "Depois do decremento: " << e << std::endl;
-
-        e.decrementGrade(); // 150 -> erro
-    } catch (std::exception& e) {
-        std::cout << "Erro ao decrementar: " << e.what() << std::endl;
+        Bureaucrat b5("Eve", 150);
+        std::cout << b5 << std::endl;
+        b5.decrementGrade(); // Deve lançar exceção
+    }
+    catch (std::exception& e) {
+        std::cerr << "Erro: " << e.what() << std::endl;
     }
 
     return 0;

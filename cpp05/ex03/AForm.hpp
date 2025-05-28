@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 14:47:56 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/27 18:55:43 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:34:52 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ class Bureaucrat;
 class AForm {
 	private:
 		const std::string Name;
-		bool isSigned;
 		const int toSign;
 		const int toExec;
+		bool isSigned;
 		
 	protected:
 		virtual void action()const = 0;
 		
 	public:
-		AForm();
 		AForm(const std::string Name, const int toSing, const int toExec);
 		AForm(const AForm &other);
 		AForm& operator=(const AForm &other);

@@ -6,21 +6,13 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 14:45:26 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/27 18:59:19 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:48:29 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-
-AForm::AForm() : Name("empty"), toSign(-1), toExec(-1), isSigned(false){
-		if(toSign  > 150 || toExec > 150)
-		throw GradeTooLowException();
-	if(toSign < 1 || toExec < 1)
-		throw GradeTooHighException();
-}
-
-AForm::AForm(const std::string Name, const int toSign, const int toExec_): 
+AForm::AForm(const std::string Name, const int toSign, const int toExec): 
 Name(Name), toSign(toSign), toExec(toExec), isSigned(false){
 
 	if(toSign > 150 || toExec > 150)
@@ -30,11 +22,11 @@ Name(Name), toSign(toSign), toExec(toExec), isSigned(false){
 }
 
 AForm::AForm(const AForm &other)
-    : Name(other.Name),isSigned(other.isSigned),toSign(other.toSign),
-      toExec(other.toExec) {}
+    : Name(other.Name),toSign(other.toSign), toExec(other.toExec), isSigned(other.isSigned) {}
       
 AForm::~AForm() {
 }
+
 std::string AForm::GetName() const{
 	return Name;	
 }
@@ -75,16 +67,10 @@ const char* AForm::GradeTooLowException::what() const throw() {
 
 std::ostream &operator<<(std::ostream &out, const AForm &form) {
 
-    if (form.getIsSign()) {
-        out << form.GetName() << ", Form is signed, requires grade " 
-            << form.GetToSign() << " to sign, " << form.GetToExec()
-            << " to execute.";
-    }
-    else {
-        out << form.GetName() << ", Form is unsigned, requires grade " 
-            << form.GetToSign() << " to sign, " << form.GetToExec()
-            << " to execute.";
-    }
+    out << form.GetName() 
+        << ", Form is " << (form.getIsSign() ? "signed" : "unsigned")
+        << ", requires grade " << form.GetToSign() << " to sign, " 
+        << form.GetToExec() << " to execute.\n";
     return out;
 }
 

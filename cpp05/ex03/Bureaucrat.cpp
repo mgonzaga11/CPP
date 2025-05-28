@@ -6,13 +6,12 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:32:35 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/27 18:39:29 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:47:29 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
-Bureaucrat::Bureaucrat(): name("empty"), grade(-1){}
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat( const std::string _name, const int _grade): name(_name) , grade(_grade){
 	if(_grade < 1)
@@ -64,17 +63,27 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &other) {
 
-    out << other.getName() << ", bureaucrat grade " << other.getGrade() << ".";;
+    out << other.getName() << ", bureaucrat grade " << other.getGrade() << ".\n";;
     return out;
 }
 
-void    Bureaucrat::signForm(Form &form) {
+void Bureaucrat::signForm(AForm &form) {
     try {
         form.beSigned(*this);
-        std::cout << name << " signed " << form.GetName() << std::endl;
+        std::cout << name << " successfully signed " << form.GetName() << "." << std::endl;
+    } catch (const std::exception &e) {
+        std::cerr << name << " couldn't sign " << form.GetName()
+                  << " because: " << e.what() << "." << std::endl;
     }
-    catch (const std::exception& e) {
-        std::cout << name << " couldn't sign " << form.GetName() 
-                  << " because " << e.what() << std::endl;
+}
+
+
+void Bureaucrat::executeForm(const AForm &form) const {
+    try {
+        form.execute(*this);
+        std::cout << name << " executed " << form.GetName() << "." << std::endl;
+    } catch (const std::exception &e) {
+        std::cerr << name << " couldn't execute " << form.GetName()
+                  << " because: " << e.what() << "." << std::endl;
     }
 }
