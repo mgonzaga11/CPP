@@ -62,13 +62,33 @@ int checkFloat(std::string str);
 int checkDouble(std::string str);
 
 
-std::string	defineType(std::string str){
-
-	checkChar
-	checkPseudo
-	checkInt
-	checkFloat
-	checkDouble
-		
-}
+bool	ScalarConverter::defineType(std::string str){
+	std::string pseudos[6] = {"nan", "+inf", "-inf", "nanf", "+inff", "-inff"};
+	for (int i = 0; i < 6; i++){
+		if (str == pseudos[i]){
+			type = PSEUDO;
+			return(0);
+		}
+	}
+	if (str.size() == 1 && !isdigit(str[0])){
+		type = CHAR;
+		return(0);
+	}
+	if (((str[0] == '+' || str[0] == '-' || isdigit(str[0])) && isdigit(str[1])) 
+		|| (str.size() == 1 &&  isdigit(str[0]))){
+		if (checkInt(str)){
+			type = INT;
+			return(0);
+		}
+		if (checkFloat(str)){
+			type = FLOAT;
+			return(0);
+		}
+		if(checkDouble(str)){
+			type = DOUBLE;
+			return(0);
+		}
+	}
+	std::cout << RED << "Error: " << WHITE << "invalid parameters" << RESET << std::endl;
+	return(1);
 

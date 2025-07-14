@@ -15,11 +15,12 @@
 
 #include <string>
 
-# define PSEUDO	1
-# define CHAR	2
-# define INT	3
-# define FLOAT	4
-# define DOUBLE	5
+# define PSEUDO	0
+# define CHAR	1
+# define INT	2
+# define FLOAT	3
+# define DOUBLE	4
+
 
 class ScalarConverter
 {
