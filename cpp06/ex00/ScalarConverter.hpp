@@ -29,7 +29,7 @@ class ScalarConverter
 		~ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
 		ScalarConverter &operator=(const ScalarConverter &other);
-		const std::string	defineType(std::string str);
+		int	defineType(std::string str);
 	public:
 		static void convert(const std::string &str);
 };
