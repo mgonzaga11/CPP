@@ -12,8 +12,6 @@
 
 #include "ScalarConverter.hpp"
 
-int checkChar(std::string str);
-int checkPseudo(std::string str);
 int checkInt(std::string str);
 int checkFloat(std::string str);
 int checkDouble(std::string str);
@@ -33,33 +31,42 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 	return (*this);
 }
 
-int checkChar(std::string str){
-	
-	if (str.size() == 1 && !isdigit(str[0]))
-		return(CHAR);
-	return(0);
+
+bool	checkInt(std::string str){
+	for (unsigned int i = 1; i < str.size(); i++)
+		if (!isdigit(str[i]))
+			return(0);
+	return(1);
 }
 
-int checkPseudo(std::string str)
-{
-	std::string pseudos[6] = {"nan", "+inf", "-inf", "nanf", "+inff", "-inff"};
-	for (int i = 0; i < 6; i++)
-	{
-		if (str == pseudos[i])
-			return(PSEUDO);
+bool	checkFloat(std::string str){
+	int	point = 0;
+	unsigned int 	size = str.size();
+
+	for (unsigned int i = 1; i < (size - 1); i++){
+		if ((str[i] != '.' && !isdigit(str[i])) || point > 1)
+			return(0);
+		if (str[i] == '.')
+			point++;
 	}
+	if (str[size - 1] == 'f')
+		return(1);
 	return(0);
 }
 
-int checkNumbers(std::string str)
-{
-	if (((str[0] == '+' || str[0] == '-' || isdigit(str[0])) && isdigit(str[1])) 
-	|| (str.size() == 1 &&  isdigit(str[0]))){
+bool	checkDouble(std::string str){
+	int				point = 0;
+	unsigned int	size = str.size();
+
+	for (unsigned int i = 1; i < size ; i++){
+		if ((str[i] != '.' && !isdigit(str[i])) || point > 1)
+			return(0);
+		if (str[i] == '.')
+			point++;
+	}
+	return(1);
 }
 
-}
-int checkFloat(std::string str);
-int checkDouble(std::string str);
 
 
 bool	ScalarConverter::defineType(std::string str){
@@ -89,6 +96,6 @@ bool	ScalarConverter::defineType(std::string str){
 			return(0);
 		}
 	}
-	std::cout << RED << "Error: " << WHITE << "invalid parameters" << RESET << std::endl;
+	std::cout << "Error:invalid parameters" << std::endl;
 	return(1);
 
