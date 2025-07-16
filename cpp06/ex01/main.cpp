@@ -1,28 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/16 18:03:05 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/07/16 18:10:02 by mgonzaga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-#include "Data.hpp"
 #include "Serializer.hpp"
+#include "Data.hpp"
 
 int main() {
-    // Criar um objeto Data
-    Data originalData;
-    originalData.id = 42;
-    originalData.name = "Teste";
+    // Criando um objeto Data
+    Data data;
+    data.id = 42;
+    data.name = "Serialization Test";
 
-    // Serializar
-    uintptr_t raw = Serializer::serialize(&originalData);
-    std::cout << "Serialized uintptr_t: " << raw << std::endl;
+    std::cout << "===== Original Data =====\n";
+    std::cout << "Endereço original: " << &data << "\n";
+    std::cout << "id: " << data.id << "\n";
+    std::cout << "name: " << data.name << "\n";
 
-    // Desserializar
-    Data* deserializedData = Serializer::deserialize(raw);
+    // Serializando: ponteiro -> inteiro
+    uintptr_t raw = Serializer::serialize(&data);
+    std::cout << "\nSerializado (uintptr_t): " << raw << "\n";
 
-    // Verificar se são o mesmo ponteiro
-    if (deserializedData == &originalData) {
-        std::cout << "Success: The deserialized pointer matches the original pointer." << std::endl;
-        std::cout << "Data content: id = " << deserializedData->id
-                  << ", name = " << deserializedData->name << std::endl;
-    } else {
-        std::cout << "Error: Deserialized pointer does not match original pointer." << std::endl;
-    }
+    // Desserializando: inteiro -> ponteiro
+    Data* restored = Serializer::deserialize(raw);
+
+    std::cout << "\n===== After Deserialize =====\n";
+    std::cout << "Endereço restaurado: " << restored << "\n";
+    std::cout << "id: " << restored->id << "\n";
+    std::cout << "name: " << restored->name << "\n";
+
+    // Verificando se é o mesmo ponteiro
+    if (restored == &data)
+        std::cout << "\n✅ Ponteiros coincidem: serialização bem-sucedida!\n";
+    else
+        std::cout << "\n❌ Ponteiros diferentes: erro na serialização!\n";
 
     return 0;
 }

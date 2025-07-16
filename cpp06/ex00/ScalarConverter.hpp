@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 18:01:26 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/29 18:39:00 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/07/16 18:29:25 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define SCALARCONVERTER_HPP
 
 #include <string>
+#include <iostream>
+#include <cstdlib>
+#include <climits>
+#include <iomanip>
 
 # define PSEUDO	0
 # define CHAR	1
@@ -29,7 +33,7 @@ class ScalarConverter
 		~ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
 		ScalarConverter &operator=(const ScalarConverter &other);
-		int	defineType(std::string str);
+		static int	defineType(const std::string &str);
 	public:
 		static void convert(const std::string &str);
 };

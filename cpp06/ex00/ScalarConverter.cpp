@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 18:01:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/05/29 18:41:30 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/07/16 18:27:13 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,24 @@ void	convertInt(std::string str, int type);
 void	convertFloat(std::string str, int type);
 void	convertDouble(std::string str, int type);
 void	convertChar(std::string str, int type);
-int		ScalarConverter::type = 0;
 
-ScalarConverter::ScalarConverter(void){};
+ScalarConverter::ScalarConverter(void) {}
 
-ScalarConverter::ScalarConverter(ScalarConverter const &that){
-	*this = that;
+// copy constructor
+ScalarConverter::ScalarConverter(const ScalarConverter &other) {
+    (void)other;
 }
 
-ScalarConverter::~ScalarConverter(void){}
-
-ScalarConverter &ScalarConverter::operator=(ScalarConverter const &that){
-	type = that.type;
-	return(*this);
+// copy assignment operator
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter &other) {
+    (void)other;
+    return *this;
 }
 
-void	ScalarConverter::convert(std::string str){
+// destructor
+ScalarConverter::~ScalarConverter(void) {}
+
+void	ScalarConverter::convert(const std::string &str){
 	int type = defineType(str);
 
 	if (type < 0)
@@ -62,7 +64,7 @@ void	ScalarConverter::convert(std::string str){
 	}
 }
 
-int	ScalarConverter::defineType(std::string str){
+int	ScalarConverter::defineType(const std::string &str){
 	std::string pseudos[6] = {"nan", "+inf", "-inf", "nanf", "+inff", "-inff"};
 	for (int i = 0; i < 6; i++){
 		if (str == pseudos[i]){

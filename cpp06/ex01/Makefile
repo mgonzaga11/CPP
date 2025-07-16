@@ -1,4 +1,4 @@
-NAME		:=  ScalarConverter
+NAME		:=  Serializer
 
 CC			:=	c++
 
