@@ -1,4 +1,4 @@
-NAME    := whatever
+NAME    := Array
 
 CC      := c++
 
@@ -6,7 +6,7 @@ CPP_FLAGS := -Wall -Werror -Wextra -std=c++98
 
 CPP     := main.cpp 
 
-HPP     := whatever.hpp
+HPP     := Array.hpp 
 
 OBJS    := main.o 
 

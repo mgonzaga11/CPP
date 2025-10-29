@@ -1,12 +1,12 @@
-NAME    := whatever
+NAME    := Span
 
 CC      := c++
 
 CPP_FLAGS := -Wall -Werror -Wextra -std=c++98
 
-CPP     := main.cpp 
+CPP     := main.cpp Span.cpp
 
-HPP     := whatever.hpp
+HPP     := Span.hpp
 
 OBJS    := main.o 
 
