@@ -28,7 +28,7 @@ void Span::addNumber(int n)
 		throw FullSpanException();
 }
 
-void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
 	if (vectorInt.size() + std::distance(begin, end) <= size){
 
