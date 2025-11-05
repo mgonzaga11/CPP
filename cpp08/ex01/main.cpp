@@ -1,0 +1,139 @@
+#include "Span.hpp"
+
+int main()
+{
+	std::cout << "------------------ EASYFIND SUBJECT TEST ----------------------" << std::endl;
+	std::cout << "---------------------------------------------------------------" << std::endl;
+	Span sp = Span(5);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
+
+	std::cout << "------------------- EASYFIND MY OWN TEST ----------------------" << std::endl;
+	std::cout << "---------------------------------------------------------------" << std::endl;
+	std::cout << "-------------------------- TEST 1 -----------------------------" << std::endl;
+	Span sp1 = Span(5);
+	sp1.addNumber(10);
+	sp1.addNumber(23);
+	sp1.addNumber(-3);
+	sp1.addNumber(18);
+	sp1.addNumber(-20);
+
+	std::cout  << "Shortest span: " << sp1.shortestSpan() << std::endl;
+	std::cout  << "Longest span: " << sp1.longestSpan() << std::endl;
+
+
+	std::cout <<   "-------------------------- TEST 2 -----------------------------" << std::endl;
+	Span sp2 = Span(10);
+	sp2.addNumber(10);
+	sp2.addNumber(23);
+	sp2.addNumber(-3);
+	sp2.addNumber(18);
+	sp2.addNumber(-20);
+	sp2.addNumber(1250);
+	sp2.addNumber(-1);
+	sp2.addNumber(54);
+	sp2.addNumber(90);
+	sp2.addNumber(8);
+
+	std::cout  << "Shortest span: " << sp2.shortestSpan() << std::endl;
+	std::cout  << "Longest span: " << sp2.longestSpan() << std::endl;
+
+
+	std::cout <<  "-------------------------- TEST 3 -----------------------------" << std::endl;
+	Span sp0 = Span(7);
+	sp0.addNumber(1);
+	sp0.addNumber(3);
+	sp0.addNumber(50);
+	sp0.addNumber(51);
+	sp0.addNumber(91);
+	sp0.addNumber(12);
+	sp0.addNumber(27);
+
+	std::cout  << "Shortest span: " << sp0.shortestSpan() << std::endl;
+	std::cout  << "Longest span: " << sp0.longestSpan() << std::endl;
+
+	std::cout <<  "------------------- 10000 ADDNUMBER TEST ----------------------" << std::endl;
+	Span sp3 = Span(10000);
+	std::srand(time(NULL));
+	for (int i = 0; i < 10000; i++)
+		sp3.addNumber(std::rand());
+
+	std::cout  << "Shortest span: " << sp3.shortestSpan() << std::endl;
+	std::cout  << "Longest span: " << sp3.longestSpan() << std::endl;
+
+
+	std::cout <<  "------------------- 10000 addRange TEST ---------------------" << std::endl;
+	Span sp4(10000);
+	std::vector<int> vec;
+	for (int i = 0; i < 10000; i++)
+		vec.push_back(std::rand());
+	sp4.addRange(vec.begin(), vec.end());
+
+	std::cout  << "Shortest span: " << sp4.shortestSpan() << std::endl;
+	std::cout  << "Longest span: " << sp4.longestSpan() << std::endl;
+
+	std::cout << "---------------------- EXCEPTION TEST -------------------------" << std::endl;
+	std::cout << "------------------ Try to add in full vector ------------------" << std::endl;
+	Span sp5 = Span(5);
+	try
+	{
+		sp5.addNumber(10);
+		sp5.addNumber(23);
+		sp5.addNumber(3);
+		sp5.addNumber(18);
+		sp5.addNumber(20);
+		sp5.addNumber(1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout <<   "------ Try to find shortest and longest in a empty vector -------" << std::endl;
+	Span sp6 = Span(5);
+
+	try
+	{
+		std::cout  << "Shortest span: " << sp6.shortestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+		try
+	{
+		std::cout  << "Longest span: " << sp6.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout <<  "--- Try to find shortest and longest vector without enough values ---" << std::endl;
+	Span sp7 = Span(5);
+
+	sp7.addNumber(1);
+	try
+	{
+		std::cout  << "Shortest span: " << sp7.shortestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+		try
+	{
+		std::cout  << "Longest span: " << sp7.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	return 0;
+}

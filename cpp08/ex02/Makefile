@@ -1,14 +1,14 @@
-NAME    := Span
+NAME    :=  MutantStack
 
 CC      := c++
 
 CPP_FLAGS := -Wall -Werror -Wextra -std=c++98
 
-CPP     := Span.cpp main.cpp
+CPP     := main.cpp 
 
-HPP     := Span.hpp
+HPP     :=  MutantStack.hpp
 
-OBJS    := Span.o main.o 
+OBJS    := main.o 
 
 all: $(NAME)
 
