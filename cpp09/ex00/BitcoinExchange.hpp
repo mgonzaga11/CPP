@@ -11,9 +11,9 @@ private:
 	std::string						_file;
 
 	BitcoinExchange(void);
-	BitcoinExchange(BitcoinExchange const &param);
+	BitcoinExchange(BitcoinExchange const &other);
 
-	BitcoinExchange	&operator=(BitcoinExchange const &param);
+	BitcoinExchange	&operator=(BitcoinExchange const &other);
 
 	void	setData(void);
 	bool	validateDate(std::string const &date) const;
