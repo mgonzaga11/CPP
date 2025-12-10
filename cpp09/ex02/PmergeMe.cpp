@@ -1,6 +1,6 @@
 #include "PmergeMe.hpp"
 
-/* CONSTRUCTORS */
+
 PmergeMe::PmergeMe(void)
     : numbers_vec(), numbers_deq(), movement_count_vec(0), movement_count_deq(0) {}
 
@@ -8,10 +8,9 @@ PmergeMe::PmergeMe(const PmergeMe &other) {
     *this = other;
 }
 
-/* DESTRUCTOR */
+
 PmergeMe::~PmergeMe(void) {}
 
-/* OPERATOR */
 PmergeMe& PmergeMe::operator=(const PmergeMe &other) {
     if (this != &other) {
         this->numbers_vec = other.numbers_vec;
@@ -20,7 +19,6 @@ PmergeMe& PmergeMe::operator=(const PmergeMe &other) {
     return *this;
 }
 
-/* INPUT PARSING */
 void PmergeMe::parseInput(int ac, char **av) {
 
     if (ac <= 1)
@@ -62,7 +60,6 @@ void PmergeMe::parseInput(int ac, char **av) {
     }
 }
 
-/* MAIN SORTER */
 void PmergeMe::sort(void) {
 
     std::clock_t start_deque = std::clock();
@@ -82,32 +79,28 @@ void PmergeMe::sort(void) {
     std::cout << "After (std::deque)  :  ";
     printContainer(numbers_deq);
 
-    // Time for vector
     double duration = static_cast<double>(end_vector - start_vector) / CLOCKS_PER_SEC;
     std::cout << "Time to process a range of " << numbers_vec.size()
         << " elements with std::vector : " << std::fixed << std::setprecision(7)
         << duration << " seconds" << std::endl;
 
-    // Time for deque
     duration = static_cast<double>(end_deque - start_deque) / CLOCKS_PER_SEC;
     std::cout << "Time to process a range of " << numbers_deq.size()
         << " elements with std::deque  : " << std::fixed << std::setprecision(7)
         << duration << " seconds" << std::endl;
 }
 
-/* VECTOR SORT */
 void PmergeMe::sortVector(void) {
     if (numbers_vec.size() > 1)
         numbers_vec = mergeInsertionVec(numbers_vec);
 }
 
-/* DEQUE SORT */
 void PmergeMe::sortDeque(void) {
     if (numbers_deq.size() > 1)
         numbers_deq = mergeInsertionDeq(numbers_deq);
 }
 
-/* MERGE-INSERTION SORT FOR VECTOR */
+// MERGE-INSERTION SORT FOR VECTOR//
 std::vector<int> PmergeMe::mergeInsertionVec(std::vector<int> vec) {
 
     std::vector<int> main;
@@ -169,7 +162,7 @@ std::vector<int> PmergeMe::mergeInsertionVec(std::vector<int> vec) {
     return main;
 }
 
-/* JACOBSTHAL INSERTION ORDER FOR VECTOR */
+// JACOBSTHAL INSERTION ORDER FOR VECTOR //
 std::vector<int> PmergeMe::getInsertionOrderVec(size_t size) {
 
     std::vector<int> sequence;
@@ -192,7 +185,7 @@ std::vector<int> PmergeMe::getInsertionOrderVec(size_t size) {
     return sequence;
 }
 
-/* MERGE-INSERTION SORT FOR DEQUE */
+// MERGE-INSERTION SORT FOR DEQUE//
 std::deque<int> PmergeMe::mergeInsertionDeq(std::deque<int> deq) {
 
     std::deque<int> main;
@@ -254,7 +247,7 @@ std::deque<int> PmergeMe::mergeInsertionDeq(std::deque<int> deq) {
     return main;
 }
 
-/* JACOBSTHAL INSERTION ORDER FOR DEQUE */
+// JACOBSTHAL INSERTION ORDER FOR DEQUE//
 std::deque<int> PmergeMe::getInsertionOrderDeq(size_t size) {
 
     std::deque<int> sequence;
